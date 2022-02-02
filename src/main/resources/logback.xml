@@ -1,0 +1,43 @@
+<!-- Configure the logs. The [scan="true"] option enables the automatic reload of configuration files when modified -->
+<configuration scan="true">
+	
+	<!-- Define the properties source -->
+	<property resource="application.properties" />
+    
+    
+    <!-- STDOUT - Print logs into console -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${logging.pattern.console}</pattern>
+        </encoder>
+    </appender>
+    
+    
+    <!-- ROLLINGFILE: Print logs into files: RollingFileAppender rolls over the log file when a certain condition is met -->
+    <appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <!-- The rollingPolicy defines HOW the file is rolled over -->
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	    	<!-- The fileName is day-base: so the rolling will happen daily -->
+	        <fileNamePattern>${logging.logback.rollingpolicy.file-name-pattern}</fileNamePattern>
+	        <!-- Max days of retention -->
+	        <maxHistory>${logging.logback.rollingpolicy.max-history}</maxHistory>
+	        <!-- Max total size of all files -->
+	        <totalSizeCap>${logging.logback.rollingpolicy.total-size-cap}</totalSizeCap>
+	    </rollingPolicy>
+	    <!-- The triggeringPolicy defines WHEN the file is rolled over -->
+	    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+	        <maxFileSize>${logging.logback.rollingpolicy.max-file-size}</maxFileSize>
+	    </triggeringPolicy>
+	    <encoder>
+	        <pattern>${logging.pattern.file}</pattern>
+	    </encoder>
+	</appender>
+	
+    <root level="${logging.level.root}">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="ROLLINGFILE" />
+    </root>
+	
+	<logger name="org.apache" level="info"/>
+	
+</configuration>

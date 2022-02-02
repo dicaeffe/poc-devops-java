@@ -1,0 +1,176 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: "POC DevOps JAVA"
+  termsOfService: "https://www.notartel.it/"
+  contact:
+    email: "customercare@notariato.it"
+  description: "The POC DevOps Java aims to be a proof of concept for the DevOps implementation on Java microservices buildt with Spring boot libraries."
+tags:
+- name: "CRUD Controller"
+  description: "An anonymous example of CRUD."
+  externalDocs:
+    description: "Find out more"
+    url: "https://www.more.info/about/"
+schemes:
+- "https"
+- "http"
+paths:
+  /crud:
+    get:
+      tags:
+      - "CRUD Controller"
+      summary: "Retrieves all elements."
+      operationId: "getElements"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Return a 200 status to indicate that the data was retrieved successfully."
+          schema:
+            $ref: "#/definitions/Elements"
+        "500":
+          description: "Generic error."
+    post:
+      tags:
+      - "CRUD Controller"
+      summary: "Post a new element"
+      description: "This is an API that should add a new element to the datasource."
+      operationId: "addElement"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "success"
+        description: "Element data to be added."
+        required: true
+        schema:
+          $ref: "#/definitions/Element"
+      responses:
+        "200":
+          description: "Return a 200 status to indicate that the data was received successfully"
+        "400":
+          description: "The request is not valid.
+                        <table>
+                        <tbody>  
+                        <tr>
+                        <td><center><strong>errorCode</strong></center></td>
+                        <td><center><strong>errorMessage</strong></center></td>
+                        </tr>
+                        <tr>
+                        <td><center>000.000</center></td>
+                        <td><center>Just another error</center></td>
+                        </tr>
+                        </tbody>
+                        </table>"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "500":
+          description: "Generic error."
+  /crud/{uuid}:
+    get:
+      tags:
+      - "CRUD Controller"
+      summary: "Retrieves the element with the requested id."
+      description: "The id must be mapped with an available element."
+      operationId: "getElementById"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "uuid"
+        description: "The UUID of the requested element to be retrieved."
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Return a 200 status to indicate that the data was retrieved successfully."
+          schema:
+            $ref: "#/definitions/Elements"
+        "404":
+          description: "No element has been found.
+                        <table>
+                        <tbody>  
+                        <tr>
+                        <td><center><strong>errorCode</strong></center></td>
+                        <td><center><strong>errorMessage</strong></center></td>
+                        </tr>
+                        <tr>
+                        <td><center>000.001</center></td>
+                        <td><center>Element not found</center></td>
+                        </tr>
+                        </tbody>
+                        </table>"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        "500":
+          description: "Generic error."
+definitions:
+  Element:
+    type: "object"
+    required:
+      - name
+    properties:
+      uuid:
+        type: "string"
+        description: "Is the alphanumeric identifier associated to the element."
+        example: "a123b4c5-de6f-7890-gh9i-j87k6lm5nop4"
+      name:
+        type: "string"
+        description: "Is the name of the element."
+        example: "Skłodowska"
+      points:
+        type: "integer"
+        format: "int64"
+        description: "Score associated to the element."
+      creationDate:
+        type: "string"
+        format: "date-time"
+        description: "Creation date of the element."
+      updateDate:
+        type: "string"
+        format: "date-time"
+        description: "Update date of the element."
+  Elements:
+    type: "object"
+    required:
+      - elements
+    properties:
+      elements:
+        type: "array"
+        items:
+          $ref: "#/definitions/Element"
+        description: "Is a list of elements."
+  ErrorResponse:
+    type: "object"
+    required:
+      - errors
+    properties:
+      errors:
+        type: "array"
+        items:
+          $ref: "#/definitions/Error"
+        description: "Is a list of errors."
+  Error:
+    type: "object"
+    required:
+      - errorCode
+      - errorMessage
+    properties:
+      field:
+        type: "string"
+        description: "The name of the field involved in the validation."
+        example: "name"
+      errorCode:
+        type: "string"
+        description: "Error code."
+        example: "000.000"
+      errorMessage:
+        type: "string"
+        description: "Error description."
+        example: "Missing something"
+externalDocs:
+  description: "Find out more on external docs"
+  url: "https://www.more.info/docs/"
