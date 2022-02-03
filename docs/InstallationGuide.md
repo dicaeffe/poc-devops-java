@@ -19,7 +19,24 @@ This document describes the steps required for the installation of the package.
 All dependencies for the new environment.
 
 ## Build
-TBD
+- With Maven installed
+	- Open the shell into the directory of the pom.xml
+	- Execute the command reported below substituting the <command> tag with the one you need (package, install or deploy).
+		```
+		mvn clean <command>
+		```
+- Without Maven from Linux
+	- Open the shell into the directory of the pom.xml
+	- Execute the command reported below substituting the <command> tag with the one you need (package, install or deploy).
+		```
+		./mvnw <command>
+		```
+- Without Maven from Window
+	- Open the shell into the directory of the pom.xml
+	- Execute the command reported below substituting the <command> tag with the one you need (package, install or deploy).
+		```
+		./mvnw.cmd <command>
+		```
 
 ## Installation
 TBD

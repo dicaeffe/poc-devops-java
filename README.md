@@ -73,6 +73,11 @@ See the latest releaseNote file into the [docs](docs/) directory.
 
 ## Roadmap
 See the Redmine for issues and backlog.
+* [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/2.6.3/reference/htmlsingle/#production-ready)
+* [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
+* Containerizing the app
+* Run on Kubernates
+* Install on Rancher
 
 
 ## Contact for support and contributions
