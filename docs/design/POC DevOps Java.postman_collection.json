@@ -101,6 +101,156 @@
 			]
 		},
 		{
+			"name": "[LOC] /actuator",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is \"+responseCode.code] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{addressLoc}}/actuator",
+					"protocol": "http",
+					"host": [
+						"{{addressLoc}}"
+					],
+					"path": [
+						"actuator"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[LOC] /actuator",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{addressLoc}}/actuator",
+							"protocol": "http",
+							"host": [
+								"{{addressLoc}}"
+							],
+							"path": [
+								"actuator"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.spring-boot.actuator.v3+json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Feb 2022 11:43:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://localhost:8080/actuator\",\n            \"templated\": false\n        },\n        \"health\": {\n            \"href\": \"http://localhost:8080/actuator/health\",\n            \"templated\": false\n        },\n        \"health-path\": {\n            \"href\": \"http://localhost:8080/actuator/health/{*path}\",\n            \"templated\": true\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "[LOC] /actuator/health",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is \"+responseCode.code] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{addressLoc}}/actuator/health",
+					"protocol": "http",
+					"host": [
+						"{{addressLoc}}"
+					],
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[LOC] /actuator/health",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{addressLoc}}/actuator/health",
+							"protocol": "http",
+							"host": [
+								"{{addressLoc}}"
+							],
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.spring-boot.actuator.v3+json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Feb 2022 11:44:36 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"UP\"\n}"
+				}
+			]
+		},
+		{
 			"name": "[LOC] /crud/",
 			"event": [
 				{
