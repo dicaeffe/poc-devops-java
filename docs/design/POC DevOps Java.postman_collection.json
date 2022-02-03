@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "cbc23ad6-41e8-4b43-8a3a-7f3a664fb50d",
+		"name": "POC DevOps Java",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Validations",
+			"item": [
+				{
+					"name": "[LOC] /crud/ | KO missing name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is \"+responseCode.code] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"points\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{addressLoc}}/crud/",
+							"protocol": "http",
+							"host": [
+								"{{addressLoc}}"
+							],
+							"path": [
+								"crud",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "[LOC] /crud/ | KO invalid",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"points\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{addressLoc}}/crud/",
+									"protocol": "http",
+									"host": [
+										"{{addressLoc}}"
+									],
+									"path": [
+										"crud",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Feb 2022 11:57:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": [\n        {\n            \"field\": \"name\",\n            \"errorCode\": \"000.001\",\n            \"errorMessage\": \"Invalid input: the field [name] must not be blank\"\n        },\n        {\n            \"field\": \"points\",\n            \"errorCode\": \"000.001\",\n            \"errorMessage\": \"Invalid input: the field [points] must be greater than or equal to 2\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "[LOC] /crud/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is \"+responseCode.code] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{addressLoc}}/crud/",
+					"protocol": "http",
+					"host": [
+						"{{addressLoc}}"
+					],
+					"path": [
+						"crud",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[LOC] /crud/",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{addressLoc}}/crud/",
+							"protocol": "http",
+							"host": [
+								"{{addressLoc}}"
+							],
+							"path": [
+								"crud",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Feb 2022 11:33:26 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"elements\": [\n        {\n            \"uuid\": \"86d7fd2d-66ab-4896-8974-1c6090d7d0de\",\n            \"notes\": null,\n            \"name\": \"Marie Salomea Skłodowska Curie\",\n            \"points\": 2,\n            \"creationDate\": \"2022-02-02T11:33:25.035+00:00\",\n            \"updateDate\": null\n        },\n        {\n            \"uuid\": \"f9066ad0-e8e0-4414-bf87-3a454fe13f0b\",\n            \"notes\": null,\n            \"name\": \"Irène Joliot-Curie\",\n            \"points\": 1,\n            \"creationDate\": \"2022-02-02T11:33:25.035+00:00\",\n            \"updateDate\": null\n        },\n        {\n            \"uuid\": \"c5354f67-4e8f-4e25-b1b9-bd5123b85485\",\n            \"notes\": null,\n            \"name\": \"Paul Langevin\",\n            \"points\": 0,\n            \"creationDate\": \"2022-02-02T11:33:25.035+00:00\",\n            \"updateDate\": null\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "[LOC] /crud/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is \"+responseCode.code] = responseCode.code === 201;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Enrico Fermi\",\r\n    \"points\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{addressLoc}}/crud/",
+					"protocol": "http",
+					"host": [
+						"{{addressLoc}}"
+					],
+					"path": [
+						"crud",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[LOC] /crud/",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Enrico Fermi\",\r\n    \"points\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{addressLoc}}/crud/",
+							"protocol": "http",
+							"host": [
+								"{{addressLoc}}"
+							],
+							"path": [
+								"crud",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Feb 2022 14:24:50 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"elements\": [\n        {\n            \"uuid\": \"bf453f04-e1b8-4b90-87ae-25d5ae601b60\",\n            \"name\": \"Enrico Fermi\",\n            \"points\": 1,\n            \"creationDate\": \"2022-02-02T14:24:50.039+00:00\",\n            \"updateDate\": null\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "[LOC] /crud/{name}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is \"+responseCode.code] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{addressLoc}}/crud/:name",
+					"protocol": "http",
+					"host": [
+						"{{addressLoc}}"
+					],
+					"path": [
+						"crud",
+						":name"
+					],
+					"variable": [
+						{
+							"key": "name",
+							"value": "Marie Salomea Skłodowska Curie"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[LOC] /crud/{uuid}",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{addressLoc}}/crud/:name",
+							"protocol": "http",
+							"host": [
+								"{{addressLoc}}"
+							],
+							"path": [
+								"crud",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "Marie Salomea Skłodowska Curie"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 02 Feb 2022 11:33:36 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"elements\": [\n        {\n            \"uuid\": \"86d7fd2d-66ab-4896-8974-1c6090d7d0de\",\n            \"notes\": null,\n            \"name\": \"Marie Salomea Skłodowska Curie\",\n            \"points\": 2,\n            \"creationDate\": \"2022-02-02T11:33:25.035+00:00\",\n            \"updateDate\": null\n        }\n    ]\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Ambiente",
+					"pm.environment.set(\"addressLoc\",\"localhost:8080\");"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

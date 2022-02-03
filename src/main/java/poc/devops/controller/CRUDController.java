@@ -64,9 +64,10 @@ public class CRUDController {
     		@RequestHeader	(value = "myheader",	required = false) String cf,
             @RequestParam	(value = "myParam",		required = false) String tipo,
             @RequestBody @Valid	Element request) {
-    	
+
     	log.info("REQUESTED - POST /crud");
-		return ResponseEntity.ok(new ElementResponse(service.add(request)));
+    	log.info("Request = {}", request);
+		return ResponseEntity.status(HttpStatus.CREATED).body(new ElementResponse(service.add(request)));
     }
     
     

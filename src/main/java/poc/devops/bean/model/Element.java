@@ -3,7 +3,6 @@ package poc.devops.bean.model;
 import java.util.Date;
 import java.util.UUID;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
@@ -17,7 +16,7 @@ public class Element {
     @NotBlank
 	private String name;
 	
-    @Min(value = 2)
+    @Min(value = 0)
 	private long points;
 
 	private Date creationDate;
@@ -25,7 +24,7 @@ public class Element {
 	private Date updateDate;
 	
 	
-	public Element(@NotBlank String name, long points) {
+	public Element(String name, long points) {
 		super();
 		this.uuid = UUID.randomUUID().toString();
 		this.name = name;
@@ -34,7 +33,7 @@ public class Element {
 	}
 
 
-	public Element(@Valid Element element) {
+	public Element(Element element) {
 		this(element.getName(), element.getPoints());
 	}
 }
