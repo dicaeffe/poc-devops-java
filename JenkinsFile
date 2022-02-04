@@ -2,7 +2,6 @@ node {
     withMaven(maven:'maven') {
     	dir('../poc-devops-java@script') {
         	stage('Build') {
-        	   	sh 'mvn install:install-file -Dpackaging=jar -DgeneratePom=true'
         	   	sh 'mvn clean install'
             	def pom = readMavenPom file:'pom.xml'
             	print pom.version
