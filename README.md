@@ -15,6 +15,7 @@ Short description of the ComponentName.
 * [Roadmap](#roadmap)
 * [Contact for support and contributions](#contact-for-support-and-contributions)
 * [License and copyright](#license-and-copyright)
+* [Notes](#notes)
 
 
 ## Getting Started
@@ -87,4 +88,6 @@ team email.
 ## License and copyright
 Of the full component and of third parties components.
 
+
+## Notes
 File created from the README_template_v.1.0
