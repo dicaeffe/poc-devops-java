@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: poc-devops-java
+  name: poc-devops-java
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: poc-devops-java
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: poc-devops-java
+    spec:
+      containers:
+      - image: docker.rete.dom:5000/poc-devops-java
+        name: poc-devops-java
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: poc-devops-java
+  name: poc-devops-java
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: poc-devops-java
+  type: ClusterIP
+status:
+  loadBalancer: {}
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: poc-devops-java
+  name: poc-devops-java
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: poc-devops-java
+  type: ClusterIP
+status:
+  loadBalancer: {}
