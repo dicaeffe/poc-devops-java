@@ -12,8 +12,8 @@ node {
     	        docker.withRegistry('http://docker.rete.dom:5000/') {
                 	def app = docker.build "docker.rete.dom:5000/poc-devops-java:${env.version}"
                 	app.push("${env.version}")
-            	}
-        	}
+    	        }
+            }
         }
     }
 }
