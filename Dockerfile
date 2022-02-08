@@ -1,9 +1,11 @@
+# This is a multistage Dockerfile: the first image is labelled "builder"
 FROM openjdk:8-jdk-alpine AS builder
 WORKDIR target/dependency
 ARG APPJAR=target/*.jar
 COPY ${APPJAR} app.jar
 RUN jar -xf ./app.jar
 
+# This is the second image
 FROM openjdk:8-jre-alpine
 VOLUME /tmp
 ARG DEPENDENCY=target/dependency
