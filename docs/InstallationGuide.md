@@ -13,7 +13,7 @@ This document describes the steps required for the installation of the package.
 * [Test](#test)
 * [Rollback](#rollback)
 * [Contact for support and contributions](#contact-for-support-and-contributions)
-* [License and copyright](#license-and-copyright)
+* [Notes](#notes)
 
 ## Prerequisites and Dependencies
 All dependencies for the new environment.
@@ -67,4 +67,5 @@ team email.
 ## License and copyright
 Of the full component and of third parties components.
 
+## Notes
 File created from the installationGuide_template_v.1.0.md

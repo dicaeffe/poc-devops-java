@@ -1,5 +1,13 @@
-FROM java:8
+FROM openjdk:8-jdk-alpine AS builder
+WORKDIR target/dependency
+ARG APPJAR=target/*.jar
+COPY ${APPJAR} app.jar
+RUN jar -xf ./app.jar
+
+FROM openjdk:8-jre-alpine
 VOLUME /tmp
-ADD /target/poc-devops-java-0.0.1-SNAPSHOT.jar app.jar
-#RUN bash -c 'touch /app.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ARG DEPENDENCY=target/dependency
+COPY --from=builder ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY --from=builder ${DEPENDENCY}/META-INF /app/META-INF
+COPY --from=builder ${DEPENDENCY}/BOOT-INF/classes /app
+ENTRYPOINT ["java","-cp","app:app/lib/*","poc.devops.PocDevopsJavaApplication"]

@@ -12,7 +12,7 @@ This document explains the new features and fixes released with the last version
 * [Test fix](#test-fix)
 * [Rollback](#rollback)
 * [Contact for support and contributions](#contact-for-support-and-contributions)
-* [License and copyright](#license-and-copyright)
+* [Notes](#notes)
 
 ## Contents released
 Link the reference of new requirements, bugs and defects.
@@ -84,7 +84,5 @@ systemctl start my-service-prod
 ## Contact for support and contributions
 team email.
 
-## License and copyright
-Of the full component and of third parties components.
-
+## Notes
 File created from the releaseNote_template_v.1.0.md
