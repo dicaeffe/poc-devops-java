@@ -63,6 +63,7 @@ Files and folders.
 ### Documentation
 Brief description of available docs and important requirements.
 See the swagger.json file for functional and technical documentation.
+An update OpenAPI documentation is available at the path http://localhost:8080/swagger-ui/index.html
 
 ### Installation from scratch
 See the [installationGuide.md](docs/installationGuide.md) file.
@@ -76,9 +77,6 @@ See the latest releaseNote file into the [docs](docs/) directory.
 See the Redmine for issues and backlog.
 * [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/2.6.3/reference/htmlsingle/#production-ready)
 * [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
-* Containerizing the app
-* Run on Kubernates
-* Install on Rancher
 
 
 ## Contact for support and contributions
