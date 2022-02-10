@@ -6,13 +6,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import poc.devops.bean.model.Element;
+import poc.devops.bean.model.Scientist;
 
 @Data
 @AllArgsConstructor
 /* Any property not bound in this type should be ignored. */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ElementResponse {
+public class ScientistResponse {
 
-	private List<Element> elements;
+	private List<Scientist> scientists;
 }

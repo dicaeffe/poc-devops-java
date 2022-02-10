@@ -22,8 +22,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import poc.devops.bean.model.Element;
-import poc.devops.service.ElementService;
+import poc.devops.bean.model.Scientist;
+import poc.devops.service.ScientistService;
 
 @WebMvcTest(CRUDController.class)
 public class CRUDControllerTest {
@@ -32,7 +32,7 @@ public class CRUDControllerTest {
 	private MockMvc mockMvc;
 	
 	@MockBean
-	private ElementService service;
+	private ScientistService service;
 	
 	
 	@Test
@@ -41,7 +41,7 @@ public class CRUDControllerTest {
 		String name = "Enrico Fermi";
 		
 		// set mocks
-		when(service.getAll()).thenReturn(Collections.singletonList(new Element(name, 1)));
+		when(service.getAll()).thenReturn(Collections.singletonList(new Scientist(name, 1)));
 		
 		// execute test
 		this.mockMvc.perform(get("/crud"))
@@ -55,7 +55,7 @@ public class CRUDControllerTest {
 	public void testGetName200() throws Exception {
 		// set variables
 		String name = "Enrico Fermi";
-		List<Element> list = Collections.singletonList(new Element(name, 1));
+		List<Scientist> list = Collections.singletonList(new Scientist(name, 1));
 		
 		// set mocks
 		when(service.get(anyString())).thenReturn(list);
@@ -65,8 +65,8 @@ public class CRUDControllerTest {
 					.andDo(print())
 					.andExpect(status().isOk())
 					.andExpect(content().string(containsString(name)))
-	                .andExpect(jsonPath("$.elements", Matchers.hasSize(1)))
-	                .andExpect(jsonPath("$.elements[0].name", Matchers.is(name)));
+	                .andExpect(jsonPath("$.scientists", Matchers.hasSize(1)))
+	                .andExpect(jsonPath("$.scientists[0].name", Matchers.is(name)));
 	}
 	
 	
@@ -76,7 +76,7 @@ public class CRUDControllerTest {
 		String json = "{\"points\": 1}";
 		
 		// set mocks
-//		when(service.add(any())).thenReturn(Collections.singletonList(element));
+//		when(service.add(any())).thenReturn(Collections.singletonList(scientist));
 		
 		// execute test
 		this.mockMvc.perform(post("/crud").contentType(MediaType.APPLICATION_JSON)
@@ -98,7 +98,7 @@ public class CRUDControllerTest {
 		String json = "{\"name\": \""+name+"\",\"points\": 1}";
 		
 		// set mocks
-		when(service.add(any())).thenReturn(Collections.singletonList(new Element(name, 1)));
+		when(service.add(any())).thenReturn(Collections.singletonList(new Scientist(name, 1)));
 		
 		// execute test
 		this.mockMvc.perform(post("/crud").contentType(MediaType.APPLICATION_JSON)
@@ -108,8 +108,8 @@ public class CRUDControllerTest {
 					.andDo(print())
 					.andExpect(status().isCreated())
 					.andExpect(content().string(containsString(name)))
-	                .andExpect(jsonPath("$.elements", Matchers.hasSize(1)))
-	                .andExpect(jsonPath("$.elements[0].name", Matchers.is(name)));
+	                .andExpect(jsonPath("$.scientists", Matchers.hasSize(1)))
+	                .andExpect(jsonPath("$.scientists[0].name", Matchers.is(name)));
 	}
     
 }

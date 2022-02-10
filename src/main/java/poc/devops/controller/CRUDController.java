@@ -17,52 +17,52 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
-import poc.devops.bean.ElementResponse;
-import poc.devops.bean.model.Element;
-import poc.devops.service.ElementService;
+import poc.devops.bean.ScientistResponse;
+import poc.devops.bean.model.Scientist;
+import poc.devops.service.ScientistService;
 
 @Slf4j
 /* @RestController combines @Controller and @ResponseBody */
 @RestController
-@RequestMapping("/crud")
+@RequestMapping("/scientist")
 public class CRUDController extends AbstractController {
 	
 	@Autowired
-	private ElementService service;
+	private ScientistService service;
 	
 	
-	@Operation(summary = "Retrieves all elements.", description = "")
+	@Operation(summary = "Retrieves all scientists.", description = "")
     @GetMapping("")
 	@ResponseStatus(HttpStatus.OK)
-	public ElementResponse get() {
+	public ScientistResponse get() {
 		
     	log.info("REQUESTED - GET /crud");
-		return new ElementResponse(service.getAll());
+		return new ScientistResponse(service.getAll());
 	}
 	
 	
-	@Operation(summary = "Retrieves the element with the requested name.", description = "The name must be mapped with an available element.")
+	@Operation(summary = "Retrieves the scientist with the requested name.", description = "The name must be mapped with an available scientist.")
 	@GetMapping(value = "/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
-	public ElementResponse get(@PathVariable String name) {
+	public ScientistResponse get(@PathVariable String name) {
 		
     	log.info("REQUESTED - GET /crud/{}", name);
-		return new ElementResponse(service.get(name));
+		return new ScientistResponse(service.get(name));
 	}
 	
 	
-	@Operation(summary = "Post a new element.", description = "This is an API that adds a new element to the datasource.")
+	@Operation(summary = "Post a new scientist.", description = "This is an API that adds a new scientist to the datasource.")
     @PostMapping(value = "",
     			 consumes = MediaType.APPLICATION_JSON_VALUE,
     			 produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
-    public ElementResponse post(
+    public ScientistResponse post(
     		@RequestHeader	(value = "myheader",	required = false) String cf,
             @RequestParam	(value = "myParam",		required = false) String tipo,
-            @RequestBody @Valid	Element request) {
+            @RequestBody @Valid	Scientist request) {
 
     	log.info("REQUESTED - POST /crud");
     	log.info("Request = {}", request);
-		return new ElementResponse(service.add(request));
+		return new ScientistResponse(service.add(request));
     }
 }

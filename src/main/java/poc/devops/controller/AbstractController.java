@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import poc.devops.bean.ErrorResponse;
 import poc.devops.utils.Enums.EError;
@@ -25,6 +26,8 @@ public class AbstractController {
      * @param ex
      * @return
      */
+	@ApiResponse(responseCode = "400",
+				 description = "The request is not valid.<table><tbody>  <tr><td><center><strong>errorCode</strong></center></td><td><center><strong>errorMessage</strong></center></td></tr><tr><td><center>000.001</center></td><td><center>Invalid input: the field [${fieldName}] ${issue}</center></td></tr></tbody></table>")
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ErrorResponse handleValidationExceptions(MethodArgumentNotValidException e) {
