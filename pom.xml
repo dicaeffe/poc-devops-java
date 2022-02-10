@@ -64,6 +64,13 @@
 			<artifactId>spring-boot-starter-validation</artifactId> 
 		</dependency>
 		
+		<!-- Produce the Open API documentation and manages the SwaggerUI -->
+		<dependency>
+		    <groupId>org.springdoc</groupId>
+		    <artifactId>springdoc-openapi-ui</artifactId>
+		    <version>1.6.4</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

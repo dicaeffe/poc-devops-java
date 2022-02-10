@@ -9,13 +9,20 @@
 			"name": "Validations",
 			"item": [
 				{
-					"name": "[LOC] /crud/ | KO missing name",
+					"name": "[LOC] /scientist/ | KO missing name",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"tests[\"Status code is \"+responseCode.code] = responseCode.code === 200;"
+									"tests[\"Status code is \"+responseCode.code] = responseCode.code === 400;\r",
+									"pm.test(\"The response has all properties\", () => {\r",
+									"    //parse the response JSON and test three properties\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.errors[0].field).to.eql('name');\r",
+									"    pm.expect(responseJson.errors[0].errorCode).to.eql('000.001');\r",
+									"    pm.expect(responseJson.errors[0].errorMessage).to.eql('Invalid input: the field [name] must not be blank');\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -34,20 +41,20 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{addressLoc}}/crud/",
+							"raw": "http://{{addressLoc}}/scientist/",
 							"protocol": "http",
 							"host": [
 								"{{addressLoc}}"
 							],
 							"path": [
-								"crud",
+								"scientist",
 								""
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "[LOC] /crud/ | KO invalid",
+							"name": "[LOC] /scientist/ | KO missing name",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -61,13 +68,13 @@
 									}
 								},
 								"url": {
-									"raw": "http://{{addressLoc}}/crud/",
+									"raw": "http://{{addressLoc}}/scientist/",
 									"protocol": "http",
 									"host": [
 										"{{addressLoc}}"
 									],
 									"path": [
-										"crud",
+										"scientist",
 										""
 									]
 								}
@@ -86,7 +93,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 02 Feb 2022 11:57:28 GMT"
+									"value": "Thu, 10 Feb 2022 09:20:37 GMT"
 								},
 								{
 									"key": "Connection",
@@ -94,9 +101,183 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"errors\": [\n        {\n            \"field\": \"name\",\n            \"errorCode\": \"000.001\",\n            \"errorMessage\": \"Invalid input: the field [name] must not be blank\"\n        },\n        {\n            \"field\": \"points\",\n            \"errorCode\": \"000.001\",\n            \"errorMessage\": \"Invalid input: the field [points] must be greater than or equal to 2\"\n        }\n    ]\n}"
+							"body": "{\n    \"errors\": [\n        {\n            \"field\": \"name\",\n            \"errorCode\": \"000.001\",\n            \"errorMessage\": \"Invalid input: the field [name] must not be blank\"\n        }\n    ]\n}"
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "OpenAPI",
+			"item": [
+				{
+					"name": "[LOC] Open API documentation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is \"+responseCode.code] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{addressLoc}}/api-docs",
+							"protocol": "http",
+							"host": [
+								"{{addressLoc}}"
+							],
+							"path": [
+								"api-docs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[LOC] Open API documentation YAML",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is \"+responseCode.code] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{addressLoc}}/api-docs.yaml",
+							"protocol": "http",
+							"host": [
+								"{{addressLoc}}"
+							],
+							"path": [
+								"api-docs.yaml"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[LOC] /swagger-ui.html |  Open API documentation Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is \"+responseCode.code] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{addressLoc}}/swagger-ui.html",
+							"protocol": "http",
+							"host": [
+								"{{addressLoc}}"
+							],
+							"path": [
+								"swagger-ui.html"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "[RANCHER] /actuator",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Status code is \"+responseCode.code] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.125.244:30038/actuator",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"125",
+						"244"
+					],
+					"port": "30038",
+					"path": [
+						"actuator"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "[RANCHER] /actuator",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.125.244:30038/actuator",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"125",
+								"244"
+							],
+							"port": "30038",
+							"path": [
+								"actuator"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.spring-boot.actuator.v3+json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Feb 2022 12:18:08 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://192.168.125.244:30038/actuator\",\n            \"templated\": false\n        },\n        \"health\": {\n            \"href\": \"http://192.168.125.244:30038/actuator/health\",\n            \"templated\": false\n        },\n        \"health-path\": {\n            \"href\": \"http://192.168.125.244:30038/actuator/health/{*path}\",\n            \"templated\": true\n        }\n    }\n}"
 				}
 			]
 		},
@@ -251,7 +432,7 @@
 			]
 		},
 		{
-			"name": "[LOC] /crud/",
+			"name": "[LOC] /scientist/",
 			"event": [
 				{
 					"listen": "test",
@@ -267,31 +448,31 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{addressLoc}}/crud/",
+					"raw": "http://{{addressLoc}}/scientist/",
 					"protocol": "http",
 					"host": [
 						"{{addressLoc}}"
 					],
 					"path": [
-						"crud",
+						"scientist",
 						""
 					]
 				}
 			},
 			"response": [
 				{
-					"name": "[LOC] /crud/",
+					"name": "[LOC] /scientist/",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{addressLoc}}/crud/",
+							"raw": "http://{{addressLoc}}/scientist/",
 							"protocol": "http",
 							"host": [
 								"{{addressLoc}}"
 							],
 							"path": [
-								"crud",
+								"scientist",
 								""
 							]
 						}
@@ -310,7 +491,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Wed, 02 Feb 2022 11:33:26 GMT"
+							"value": "Thu, 10 Feb 2022 09:21:03 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -322,12 +503,12 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"elements\": [\n        {\n            \"uuid\": \"86d7fd2d-66ab-4896-8974-1c6090d7d0de\",\n            \"notes\": null,\n            \"name\": \"Marie Salomea Skłodowska Curie\",\n            \"points\": 2,\n            \"creationDate\": \"2022-02-02T11:33:25.035+00:00\",\n            \"updateDate\": null\n        },\n        {\n            \"uuid\": \"f9066ad0-e8e0-4414-bf87-3a454fe13f0b\",\n            \"notes\": null,\n            \"name\": \"Irène Joliot-Curie\",\n            \"points\": 1,\n            \"creationDate\": \"2022-02-02T11:33:25.035+00:00\",\n            \"updateDate\": null\n        },\n        {\n            \"uuid\": \"c5354f67-4e8f-4e25-b1b9-bd5123b85485\",\n            \"notes\": null,\n            \"name\": \"Paul Langevin\",\n            \"points\": 0,\n            \"creationDate\": \"2022-02-02T11:33:25.035+00:00\",\n            \"updateDate\": null\n        }\n    ]\n}"
+					"body": "{\n    \"scientists\": [\n        {\n            \"uuid\": \"d84c2a00-1047-4dfb-9494-ea3646b614e6\",\n            \"name\": \"Marie Salomea Skłodowska Curie\",\n            \"numberOfNobels\": 2,\n            \"creationDate\": \"2022-02-10T09:18:03.904+00:00\",\n            \"updateDate\": null\n        },\n        {\n            \"uuid\": \"03daaa33-2f15-4284-ae97-b6b3f7355daf\",\n            \"name\": \"Irène Joliot-Curie\",\n            \"numberOfNobels\": 1,\n            \"creationDate\": \"2022-02-10T09:18:03.904+00:00\",\n            \"updateDate\": null\n        },\n        {\n            \"uuid\": \"a38b9605-bbf4-42d5-a48d-1ccfdb83b27d\",\n            \"name\": \"Paul Langevin\",\n            \"numberOfNobels\": 0,\n            \"creationDate\": \"2022-02-10T09:18:03.904+00:00\",\n            \"updateDate\": null\n        }\n    ]\n}"
 				}
 			]
 		},
 		{
-			"name": "[LOC] /crud/",
+			"name": "[LOC] /scientist/",
 			"event": [
 				{
 					"listen": "test",
@@ -352,20 +533,20 @@
 					}
 				},
 				"url": {
-					"raw": "http://{{addressLoc}}/crud/",
+					"raw": "http://{{addressLoc}}/scientist/",
 					"protocol": "http",
 					"host": [
 						"{{addressLoc}}"
 					],
 					"path": [
-						"crud",
+						"scientist",
 						""
 					]
 				}
 			},
 			"response": [
 				{
-					"name": "[LOC] /crud/",
+					"name": "[LOC] /scientist/",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
@@ -379,13 +560,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://{{addressLoc}}/crud/",
+							"raw": "http://{{addressLoc}}/scientist/",
 							"protocol": "http",
 							"host": [
 								"{{addressLoc}}"
 							],
 							"path": [
-								"crud",
+								"scientist",
 								""
 							]
 						}
@@ -404,7 +585,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Wed, 02 Feb 2022 14:24:50 GMT"
+							"value": "Thu, 10 Feb 2022 09:21:17 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -416,12 +597,12 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"elements\": [\n        {\n            \"uuid\": \"bf453f04-e1b8-4b90-87ae-25d5ae601b60\",\n            \"name\": \"Enrico Fermi\",\n            \"points\": 1,\n            \"creationDate\": \"2022-02-02T14:24:50.039+00:00\",\n            \"updateDate\": null\n        }\n    ]\n}"
+					"body": "{\n    \"scientists\": [\n        {\n            \"uuid\": \"c9562bfc-c82d-4ca7-acec-3e81555a45c2\",\n            \"name\": \"Enrico Fermi\",\n            \"numberOfNobels\": 0,\n            \"creationDate\": \"2022-02-10T09:21:17.585+00:00\",\n            \"updateDate\": null\n        }\n    ]\n}"
 				}
 			]
 		},
 		{
-			"name": "[LOC] /crud/{name}",
+			"name": "[LOC] /scientist/{name}",
 			"event": [
 				{
 					"listen": "test",
@@ -437,13 +618,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://{{addressLoc}}/crud/:name",
+					"raw": "http://{{addressLoc}}/scientist/:name",
 					"protocol": "http",
 					"host": [
 						"{{addressLoc}}"
 					],
 					"path": [
-						"crud",
+						"scientist",
 						":name"
 					],
 					"variable": [
@@ -456,18 +637,18 @@
 			},
 			"response": [
 				{
-					"name": "[LOC] /crud/{uuid}",
+					"name": "[LOC] /scientist/{name}",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://{{addressLoc}}/crud/:name",
+							"raw": "http://{{addressLoc}}/scientist/:name",
 							"protocol": "http",
 							"host": [
 								"{{addressLoc}}"
 							],
 							"path": [
-								"crud",
+								"scientist",
 								":name"
 							],
 							"variable": [
@@ -492,7 +673,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Wed, 02 Feb 2022 11:33:36 GMT"
+							"value": "Thu, 10 Feb 2022 09:21:24 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -504,7 +685,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"elements\": [\n        {\n            \"uuid\": \"86d7fd2d-66ab-4896-8974-1c6090d7d0de\",\n            \"notes\": null,\n            \"name\": \"Marie Salomea Skłodowska Curie\",\n            \"points\": 2,\n            \"creationDate\": \"2022-02-02T11:33:25.035+00:00\",\n            \"updateDate\": null\n        }\n    ]\n}"
+					"body": "{\n    \"scientists\": [\n        {\n            \"uuid\": \"d84c2a00-1047-4dfb-9494-ea3646b614e6\",\n            \"name\": \"Marie Salomea Skłodowska Curie\",\n            \"numberOfNobels\": 2,\n            \"creationDate\": \"2022-02-10T09:18:03.904+00:00\",\n            \"updateDate\": null\n        }\n    ]\n}"
 				}
 			]
 		}

@@ -4,15 +4,17 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import poc.devops.bean.model.Element;
+import poc.devops.bean.model.Scientist;
 
 @Data
 @AllArgsConstructor
 /* Any property not bound in this type should be ignored. */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ElementResponse {
+public class ScientistResponse {
 
-	private List<Element> elements;
+	@Schema(description = "List of scientists.")
+	private List<Scientist> scientists;
 }
