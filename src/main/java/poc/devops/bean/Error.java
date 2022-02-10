@@ -1,7 +1,10 @@
 package poc.devops.bean;
 
+import javax.validation.constraints.NotBlank;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import poc.devops.utils.Enums.EError;
 
@@ -10,8 +13,15 @@ import poc.devops.utils.Enums.EError;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Error {
 
+	@Schema(description = "The name of the field involved in the validation.", example = "name")
 	private String field;
+
+    @NotBlank
+	@Schema(description = "Error code.", example = "000.001")
 	private String errorCode;
+
+    @NotBlank
+	@Schema(description = "Error message.", example = "Invalid input: the field [name] must not be blank")
 	private String errorMessage;
 	
 	

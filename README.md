@@ -62,8 +62,9 @@ Files and folders.
 
 ### Documentation
 Brief description of available docs and important requirements.
-See the swagger.json file for functional and technical documentation.
-An update OpenAPI documentation is available at the path http://localhost:8080/swagger-ui/index.html
+An example of Open API documentation is available in the [swagger](docs/design/swagger.yaml) file. The updated version can be obtained by running a local instance of the project and reaching:
+- SWAGGER-JSON: http://localhost:8080/v3/api-docs
+- SWAGGER-UI: http://localhost:8080/swagger-ui/index.html
 
 ### Installation from scratch
 See the [installationGuide.md](docs/installationGuide.md) file.

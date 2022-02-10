@@ -25,8 +25,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import poc.devops.bean.model.Scientist;
 import poc.devops.service.ScientistService;
 
-@WebMvcTest(CRUDController.class)
-public class CRUDControllerTest {
+@WebMvcTest(ScientistController.class)
+public class ScientistControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -44,7 +44,7 @@ public class CRUDControllerTest {
 		when(service.getAll()).thenReturn(Collections.singletonList(new Scientist(name, 1)));
 		
 		// execute test
-		this.mockMvc.perform(get("/crud"))
+		this.mockMvc.perform(get("/scientist"))
 					.andDo(print())
 					.andExpect(status().isOk())
 					.andExpect(content().string(containsString(name)));
@@ -61,7 +61,7 @@ public class CRUDControllerTest {
 		when(service.get(anyString())).thenReturn(list);
 		
 		// execute test
-		this.mockMvc.perform(get("/crud/"+name))
+		this.mockMvc.perform(get("/scientist/"+name))
 					.andDo(print())
 					.andExpect(status().isOk())
 					.andExpect(content().string(containsString(name)))
@@ -73,13 +73,13 @@ public class CRUDControllerTest {
 	@Test
 	public void testPost400() throws Exception {
 		// set variables
-		String json = "{\"points\": 1}";
+		String json = "{\"numberOfNobels\": 1}";
 		
 		// set mocks
 //		when(service.add(any())).thenReturn(Collections.singletonList(scientist));
 		
 		// execute test
-		this.mockMvc.perform(post("/crud").contentType(MediaType.APPLICATION_JSON)
+		this.mockMvc.perform(post("/scientist").contentType(MediaType.APPLICATION_JSON)
 										  .content(json)
 										  .characterEncoding("utf-8")
 										  .accept(MediaType.APPLICATION_JSON))
@@ -95,13 +95,13 @@ public class CRUDControllerTest {
 	public void testPost201() throws Exception {
 		// set variables
 		String name = "Enrico Fermi";
-		String json = "{\"name\": \""+name+"\",\"points\": 1}";
+		String json = "{\"name\": \""+name+"\",\"numberOfNobels\": 1}";
 		
 		// set mocks
 		when(service.add(any())).thenReturn(Collections.singletonList(new Scientist(name, 1)));
 		
 		// execute test
-		this.mockMvc.perform(post("/crud").contentType(MediaType.APPLICATION_JSON)
+		this.mockMvc.perform(post("/scientist").contentType(MediaType.APPLICATION_JSON)
 										  .content(json)
 										  .characterEncoding("utf-8")
 										  .accept(MediaType.APPLICATION_JSON))

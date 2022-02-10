@@ -16,14 +16,17 @@ public class Scientist {
 	private String uuid;
 
     @NotBlank
-	@Schema(description = "Name of the scientist.", example = "Skłodowska")
+	@Schema(description = "Name of the scientist.", example = "Marie Salomea Skłodowska Curie")
 	private String name;
 	
     @Min(value = 0)
+	@Schema(description = "Number of Nobel prizes.", example = "2")
 	private long numberOfNobels;
-
+    
+	@Schema(description = "Creation date.", example = "1903-11-12T01:23:45.678Z")
 	private Date creationDate;
 	
+	@Schema(description = "Update date.", example = "1903-11-12T01:23:45.678Z")
 	private Date updateDate;
 	
 	

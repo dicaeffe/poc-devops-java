@@ -25,7 +25,7 @@ import poc.devops.service.ScientistService;
 /* @RestController combines @Controller and @ResponseBody */
 @RestController
 @RequestMapping("/scientist")
-public class CRUDController extends AbstractController {
+public class ScientistController extends AbstractController {
 	
 	@Autowired
 	private ScientistService service;
