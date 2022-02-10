@@ -11,7 +11,7 @@ Short description of the ComponentName.
 	* [Project structure](#project-structure)
 	* [Documentation](#documentation)
 	* [Installation from scratch](#installation-from-scratch)
-	* [Update of the installation](#update-of-the-installation)
+	* [Update the installation](#update-the-installation)
 * [Roadmap](#roadmap)
 * [Contact for support and contributions](#contact-for-support-and-contributions)
 * [License and copyright](#license-and-copyright)
@@ -70,7 +70,7 @@ An example of Open API documentation is available in the [swagger](docs/design/s
 See the [installationGuide.md](docs/installationGuide.md) file.
 
 
-### Update of the installation
+### Update the installation
 See the latest releaseNote file into the [docs](docs/) directory.
 
 
