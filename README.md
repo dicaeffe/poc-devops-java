@@ -61,10 +61,25 @@ Files and folders.
 ```
 
 ### Documentation
-Brief description of available docs and important requirements.
-An example of Open API documentation is available in the [swagger](docs/design/swagger.yaml) file. The updated version can be obtained by running a local instance of the project and reaching:
-- SWAGGER-JSON: http://localhost:8080/v3/api-docs
-- SWAGGER-UI: http://localhost:8080/swagger-ui/index.html
+
+#### Interface
+The documentation has been written in the [OpenAPI/Swagger](http://swagger.io/) format and is available:
+- as example in the [swagger.yaml](docs/design/swagger.yaml) file.
+- as updated document created dynamically by the java project by running the instance of the project and reaching:
+	- SWAGGER-JSON: http://<host>/v3/api-docs
+	- SWAGGER-UI: http://<host>/swagger-ui/index.html
+where <host> can be localhost:8080.
+
+The swagger can be also visualized as HTML page using one of those options:
+* [Swagger UI](https://github.com/swagger-api/swagger-ui)
+* [Swagger Editor](http://editor.swagger.io/)
+
+#### Postman collection
+A Postman collection is available in the [POC DevOps Java.postman_collection.json](docs/design/POC DevOps Java.postman_collection.json) file.
+
+#### Sequence diagram
+An example of Sequence diagram is available in the [design](docs/design) directory.
+
 
 ### Installation from scratch
 See the [installationGuide.md](docs/installationGuide.md) file.

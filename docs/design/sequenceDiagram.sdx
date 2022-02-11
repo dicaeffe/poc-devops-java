@@ -2,55 +2,51 @@
 <diagram>
     <source>
         <![CDATA[#!>>
-#!CANOT
-#!CA Notartel Retention flow Garb
+#!Scientists
+#!A useless API used for a POC project of DevOps integration.
 #!<<
 
 # Components
-ca: "CA Notartel"
-dm: "Document Manager"
-orc: Actor "Daemon CANOT"
-s3: "NETAPP S3"
-foo: foo
+poc: "poc"
+other: "Another"
+third: Actor "Third player"
 
 # Start flow
-ca[1]:ans1
-ca[0]:ans0
+poc[1]:first action
+poc[0]:second action
 
-ca:dm.asd req
+poc:other.just a request
 
-*1 dm
+*1 other
   multi-
   line
   note
 *1
 
 [c]
-  (1)dm:orc.message_1
-  --some text
-  dm:s3.message_n
+  (1)other:third.message_1
 [/c]
 
-[c:alt Text info]
-  (5) dm:orc.message_1
-  --some text
-  dm:s3.message_n
+[c:alt Alternative management]
+  (1)other:third.message_1
+  --this can be an alternative
+  other:other.message_n
 [/c]
 
-[c:opt Text info]
-  dm:orc.message_1
-  --some text
-  dm:s3.message_n
+[c:opt Options management]
+  (1)other:third.message_1
+  --this can be an alternative
+  other:other.message_n
 [/c]
 
-[c:cond Text info]
-  dm:orc.message_1
-  --some text
-  dm:s3.message_n
+[c:cond Conditions]
+  (1)other:third.message_1
+  --this can be an alternative
+  other:other.message_n
 [/c]
 
 [c asynchronous message]
-  dm:>orc.start async
+  other:>third.start async
 [/c]]]>
     </source>
     <configuration>
