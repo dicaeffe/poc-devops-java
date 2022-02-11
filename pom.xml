@@ -51,7 +51,6 @@
 			<scope>test</scope>
 		</dependency>
 		
-		
 		<!-- GSON library for JSON management -->
 		<!-- <dependency>
 		    <groupId>com.google.code.gson</groupId>
