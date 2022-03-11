@@ -2,11 +2,12 @@
 
 
 ## ABOUT
-This document explains the new features and fixes released with the last version and describes the steps required for the update of the installation of ComponentName.
+This document explains the new features and fixes released with this version and describes the steps required for the update of the installation of ComponentName.
 
 
 ## Index
-* [Contents released](#contents-released)
+* [Changelog](#changelog)
+* [Download of the new release](#download-of-the-new-release)
 * [Elements released](#elements-released)
 * [Update of the installation](#update-of-the-installation)
 	* [Involved environments](#involved-environments)
@@ -17,13 +18,22 @@ This document explains the new features and fixes released with the last version
 * [Notes](#notes)
 
 
-## Contents released
+## Changelog
 Link the reference of new requirements, bugs and defects.
 
-| Reference | Description |
+| Ticket    | Description |
 | --------- | ----------- |
 | RedmineId | title       |
+| Asana id  | title       |
+| Jira id   | title       |
+| RTC id    | title       |
 
+## Download of the new release
+
+| URL      | https://please.click/here |
+| FILENAME | VOL-notartel-2.1.47.zip |
+| SIZE     | 161139730 |
+| SHA256   | 5598d860e86507f895d33191029139b05ec9250f68f379d48c3e015a92b833b1 |
 
 ## Elements released
 List all the new files released.
@@ -33,9 +43,9 @@ List all the new files released.
 | pack.jar  | executable    | /a/b |
 | conf.prop | configuration | /a/b |
 
-
 ## Update of the installation
-Description of the steps for the update of the installation
+Description of the steps for the update of the installation.
+If this is the first release, please read the Installation Guide before making any action on this Release Note.
 
 
 ### Involved environments
@@ -92,7 +102,10 @@ systemctl start my-service-prod
 
 
 ## Contact for support and contributions
-team email.
+
+| Name      | Description | email          |
+| --------- | ----------- | -------------- |
+| Team name | Who we are  | contact@us.now |
 
 
 ## Notes

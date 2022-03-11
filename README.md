@@ -11,7 +11,7 @@ Short description of the ComponentName.
 	* [Project structure](#project-structure)
 	* [Documentation](#documentation)
 	* [Installation from scratch](#installation-from-scratch)
-	* [Update the installation](#update-the-installation)
+	* [Update of the installation](#update-of-the-installation)
 * [Roadmap](#roadmap)
 * [Contact for support and contributions](#contact-for-support-and-contributions)
 * [License and copyright](#license-and-copyright)
@@ -61,13 +61,14 @@ Files and folders.
 ```
 
 ### Documentation
+Brief description of available docs and important requirements.
 
 #### Interface
 The documentation has been written in the [OpenAPI/Swagger](http://swagger.io/) format and is available:
-- as example in the [swagger.yaml](docs/design/swagger.yaml) file.
-- as updated document created dynamically by the java project by running the instance of the project and reaching:
-	- SWAGGER-JSON: http://<host>/v3/api-docs
-	- SWAGGER-UI: http://<host>/swagger-ui/index.html
+\ as example in the [swagger.yaml](docs/design/swagger.yaml) file.
+* as updated document created dynamically by the java project by running the instance of the project and reaching:
+	* SWAGGER-JSON: http://<host>/v3/api-docs
+	* SWAGGER-UI: http://<host>/swagger-ui/index.html
 where <host> can be localhost:8080.
 
 The swagger can be also visualized as HTML page using one of those options:
@@ -82,21 +83,22 @@ An example of Sequence diagram is available in the [design](docs/design) directo
 
 
 ### Installation from scratch
-See the [installationGuide.md](docs/installationGuide.md) file.
+See the [installationGuide.md](docs/InstallationGuide.md) file.
 
 
-### Update the installation
+### Update of the installation
 See the latest releaseNote file into the [docs](docs/) directory.
 
 
 ## Roadmap
-See the Redmine for issues and backlog.
-* [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/2.6.3/reference/htmlsingle/#production-ready)
-* [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
+See the Redmine/Asana/Jira/RTC for issues and backlog.
 
 
 ## Contact for support and contributions
-team email.
+
+| Name      | Description | email          |
+| --------- | ----------- | -------------- |
+| Team name | Who we are  | contact@us.now |
 
 
 ## License and copyright
