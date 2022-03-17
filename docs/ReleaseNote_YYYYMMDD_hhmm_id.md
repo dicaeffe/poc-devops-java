@@ -43,6 +43,7 @@ List all the new files released.
 | pack.jar  | executable    | /a/b |
 | conf.prop | configuration | /a/b |
 
+
 ## Update of the installation
 Description of the steps for the update of the installation.
 If this is the first release, please read the Installation Guide before making any action on this Release Note.
