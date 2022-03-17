@@ -228,7 +228,7 @@ If the installation has been successful, execute the tests reported below to tes
 	docker stop ${container-id}
 	docker rm ${container-id}
 	```
-1. Remove the directory with source code created in the [Build and installation](#build-and-installation) paragraph.
+1. Remove the directory with source code created in the [Build](#build) paragraph.
 1. Restore the datasource from the backup created in the first step of the [datasource](#datasource) paragraph.
 
 
