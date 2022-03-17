@@ -31,7 +31,7 @@ Link the reference of new requirements, bugs and defects.
 ## Download of the new release
 
 | URL      | https://please.click/here |
-| FILENAME | VOL-notartel-2.1.47.zip |
+| FILENAME | myFile-1.1.1.zip |
 | SIZE     | 161139730 |
 | SHA256   | 5598d860e86507f895d33191029139b05ec9250f68f379d48c3e015a92b833b1 |
 
