@@ -2,18 +2,18 @@
 
 
 ## ABOUT
-This document describes the steps required for the installation of the package.
+This document describes the steps required for the installation of the ComponentName.
 
 
 ## Index
 * [Prerequisites and Dependencies](#prerequisites-and-dependencies)
 * [Build](#build)
 * [Installation](#installation)
+	* [Datasource](#datasource)
+	* [Configuration](#configuration)
 	* [Deploy on a local container](#deploy-on-a-local-container)
 	* [Deploy on Kubernates](#deploy-on-kubernates)
 	* [Install as WORKLOAD on RANCHER GUI](#install-as-workload-on-rancher-gui))
-	* [Datasource](#datasource)
-	* [Configuration](#configuration)
 * [Execution](#execution)
 * [Test](#test)
 * [Rollback](#rollback)
@@ -99,6 +99,19 @@ All dependencies for the new environment.
 
 ## Installation
 
+### Datasource
+1. Execute a backup of the datasource.
+2. Run against the datasource all the SQL scripts in the [datasource](src/resources/datasource/) directory.
+
+
+### Configuration
+- The configuration can be done as environment variables or Rancher's configMaps/secrets. If a secrets management tool is available, use it for Access Keys and User/password credentials.
+
+| Key                      | example                       | Description                  |
+| ------------------------- | --------------------------- | ---------------------------- |
+| spring.jpa.hibernate.ddl-auto | none | Is the Spring Data JPA specific properties to define the value that will eventually be passed to Hibernate under the property it knows, hibernate.hbm2ddl.auto. See Hibernate for further details. |
+
+
 
 ### Deploy on a local container
 - **Prerequisite**: docker.
@@ -180,15 +193,6 @@ All dependencies for the new environment.
     - Click *Create* button.
 
 
-### Datasource
-1. Execute a backup of the datasource.
-2. Run against the datasource all the scripts in the [datasource](src/resources/datasource/) directory.
-
-
-### Configuration
-TBD
-
-
 ## Execution
 TBD
 ```
@@ -198,19 +202,41 @@ cmd to be thrown
 
 ## Test
 If the installation has been successful, execute the tests reported below to test functional behaviour.
-- **Check actuator**
+
+1. Check if the docker image is up and running
 	```sh
-	curl --location --request GET 'http://localhost:8080/actuator'
+	docker ps
 	```
-- **Postman collection** in the ```\docs\design\POC DevOps Java.postman_collection.json```
+1. For logs use the command
+	```sh
+	docker logs ${id-container}
+	```
+1. Execute the cURL to check the actuators' response.
+    ```sh
+    curl --location --request GET 'http://${VM-ip}:8080/actuator'
+    ```
+1. Invoke the APIs with the **Postman collection** in the ```\docs\design\POC DevOps Java.postman_collection.json``` file.
 
 
 # Rollback
+1. Check the *CONTAINER ID* with command:
+	```sh
+	docker ps
+	```
+1. Stop and delete the container
+	```sh
+	docker stop ${container-id}
+	docker rm ${container-id}
+	```
+1. Remove the directory with source code created in the [Build and installation](#build-and-installation) paragraph.
 1. Restore the datasource from the backup created in the first step of the [datasource](#datasource) paragraph.
 
 
 ## Contact for support and contributions
-team email.
+
+| Name      | Description | email          |
+| --------- | ----------- | -------------- |
+| Team name | Who we are  | contact@us.now |
 
 
 ## Notes
