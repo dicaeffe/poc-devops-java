@@ -18,7 +18,7 @@ spec:
         app: poc-devops-java
     spec:
       containers:
-      - image: dicaeffe/poc-devops-java:0.0.1-SNAPSHOT
+      - image: dicaeffe/poc-devops-java:0.0.2-SNAPSHOT
         name: poc-devops-java
         resources: {}
 status: {}

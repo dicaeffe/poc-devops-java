@@ -12,7 +12,7 @@
 	
 	<groupId>poc.devops</groupId>
 	<artifactId>poc-devops-java</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>poc-devops-java</name>
 	<description>Proof of concept (POC) for a Springboot project for a devops approach</description>
 	
